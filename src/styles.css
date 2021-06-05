@@ -1,0 +1,37 @@
+.container {
+  color: #596aca;
+  font-family: "Arial Narrow", "Franklin Gothic Medium", Arial, sans-serif;
+  margin-top: 20px;
+}
+
+form {
+  display: inline;
+}
+
+input {
+  border-radius: 5px;
+}
+
+#getCurrent,
+#searchButton {
+  border-radius: 5px;
+  color: #fff;
+  background-color: #596aca;
+}
+
+h1 {
+  padding: 10px 0px;
+}
+
+#tempMain {
+  font-size: 500%;
+}
+
+.alignTop {
+  position: relative;
+  top: -2.8em;
+}
+
+.additionalDetails {
+  font-size: smaller;
+}
