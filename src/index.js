@@ -30,6 +30,7 @@ function tempDefault(defaultLoad) {
   emojiMain.innerHTML = "<img src='" + emojiIconLink + "' width='70px'>";
   descriptionMain.innerHTML = defaultLoad.data.weather[0].main;
   humidity.innerHTML = Math.round(defaultLoad.data.main.humidity);
+  wind.innerHTML = Math.round(defaultLoad.data.wind.speed);
 }
 
 function errorMsg() {
@@ -41,7 +42,7 @@ function searchCity(searchInput) {
   let citySearch = document.querySelector("#searchInput");
   let citySearchClean = citySearch.value.trim();
   let apiURLSearch = `${apiURLMain}weather?q=${citySearchClean}&units=${units}&appid=${apiKey}`;
-
+  //console.log(apiURLSearch);
   axios.get(apiURLSearch).then(tempDefault).catch(errorMsg);
 }
 
@@ -88,6 +89,7 @@ let tempMain = document.querySelector("#tempMain");
 let emojiMain = document.querySelector("#emojiMain");
 let descriptionMain = document.querySelector("#descriptionMain");
 let humidity = document.querySelector("#humidity");
+let wind = document.querySelector("#wind");
 
 axios.get(apiURLDefault).then(tempDefault);
 
