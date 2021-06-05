@@ -1,6 +1,14 @@
+.overall {
+  max-width: 600px;
+  border: 1px solid #596aca;
+  border-radius: 5px;
+  margin: 30px auto;
+}
+
 .container {
   color: #596aca;
   font-family: "Arial Narrow", "Franklin Gothic Medium", Arial, sans-serif;
+
   margin-top: 20px;
 }
 
