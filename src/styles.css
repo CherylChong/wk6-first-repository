@@ -35,3 +35,8 @@ h1 {
 .additionalDetails {
   font-size: smaller;
 }
+
+footer {
+  font-size: smaller;
+  font-style: italic;
+}
