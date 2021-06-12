@@ -37,16 +37,17 @@ function displayForecast(forecast) {
   let daysForecast = forecast.data.daily;
   let forecastHTML = `<div class="row">`;
 
-  daysForecast.forEach(function (forecastInfo) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">${dayForecast(
-        forecastInfo.dt * 1000
-      )}<br /><img src="http://openweathermap.org/img/wn/${
-        forecastInfo.weather[0].icon
-      }@2x.png" width="40px"><br />${Math.round(
-        forecastInfo.temp.day
-      )}ºC<br />${forecastInfo.weather[0].main}</div>`;
+  daysForecast.forEach(function (forecastInfo, index) {
+    if (index > 0 && index < 6)
+      forecastHTML =
+        forecastHTML +
+        `<div class="col forecastStyle">${dayForecast(
+          forecastInfo.dt
+        )}<br /><img src="http://openweathermap.org/img/wn/${
+          forecastInfo.weather[0].icon
+        }@2x.png" width="40px"><br />${Math.round(
+          forecastInfo.temp.day
+        )}ºC<br />${forecastInfo.weather[0].main}</div>`;
   });
 
   forecastHTML = forecastHTML + `</div>`;

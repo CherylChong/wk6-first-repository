@@ -8,7 +8,6 @@
 .container {
   color: #596aca;
   font-family: "Arial Narrow", "Franklin Gothic Medium", Arial, sans-serif;
-
   margin-top: 20px;
 }
 
@@ -42,6 +41,10 @@ h1 {
 
 .additionalDetails {
   font-size: smaller;
+}
+
+.forecastStyle {
+  text-align: center;
 }
 
 footer {
