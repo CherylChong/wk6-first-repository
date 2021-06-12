@@ -22,18 +22,24 @@ function dayTimeCurrent(date) {
 }
 
 function displayForecast(forecast) {
-  console.log(forecast);
+  //console.log(forecast);
   console.log(forecast.data.daily[0]);
-  console.log(new Date(forecast.data.daily[2].dt * 1000).getDay());
+  //console.log(new Date(forecast.data.daily[2].dt * 1000).getDay());
 
   let forecastElement = document.querySelector("#forecast");
-  let daysForecast = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let daysForecast = forecast.data.daily;
   let forecastHTML = `<div class="row">`;
 
-  daysForecast.forEach(function (day) {
+  daysForecast.forEach(function (forecastInfo) {
     forecastHTML =
       forecastHTML +
-      `<div class="col">${day}<br />☀<br />32ºC<br />Sunny</div>`;
+      `<div class="col">${new Date(
+        forecastInfo.dt * 1000
+      )}<br /><img src="http://openweathermap.org/img/wn/${
+        forecastInfo.weather[0].icon
+      }@2x.png" width="40px"><br />${Math.round(
+        forecastInfo.temp.day
+      )}ºC<br />${forecastInfo.weather[0].main}</div>`;
   });
 
   forecastHTML = forecastHTML + `</div>`;
