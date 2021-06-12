@@ -95,16 +95,22 @@ function getCurrent(position) {
   navigator.geolocation.getCurrentPosition(retrieveCurrent);
 }
 
-function celciusCalculation() {
+function celciusCalculation(event) {
+  event.preventDefault();
   units = `metric`;
   let apiURLMetric = `${apiURLMain}weather?q=${cityCurrent.innerText}&units=${units}&appid=${apiKey}`;
+  let windUnit = document.querySelector("#windUnit");
+  windUnit.innerHTML = ` metre/sec`;
 
   axios.get(apiURLMetric).then(tempDefault);
 }
 
-function fahrenheitCalculation() {
+function fahrenheitCalculation(event) {
+  event.preventDefault();
   units = `imperial`;
   let apiURLImperial = `${apiURLMain}weather?q=${cityCurrent.innerText}&units=${units}&appid=${apiKey}`;
+  let windUnit = document.querySelector("#windUnit");
+  windUnit.innerHTML = ` miles/hour`;
 
   axios.get(apiURLImperial).then(tempDefault);
 }
@@ -131,14 +137,15 @@ let wind = document.querySelector("#wind");
 
 axios.get(apiURLDefault).then(tempDefault);
 
-//Retrieve Singapore weather forecast on load (day, emoji, temp, description) **NOT YET**
+//Retrieve Singapore weather forecast on load (day, emoji, temp, description)
 //displayForecast();
 
 //Search to retrieve searched city weather
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
 
-//Search to retrieve searched city forecast **NOT YET**
+//Search to retrieve searched city forecast
+//displayForecast();
 
 //Current to retrieve current location on button click
 let buttonCurrent = document.querySelector("#getCurrent");
