@@ -21,7 +21,11 @@ function dayTimeCurrent(date) {
   return `<br>${day}<br>${hour}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(forecast) {
+  console.log(forecast);
+  console.log(forecast.data.daily[0]);
+  console.log(new Date(forecast.data.daily[2].dt * 1000).getDay());
+
   let forecastElement = document.querySelector("#forecast");
   let daysForecast = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHTML = `<div class="row">`;
@@ -40,12 +44,17 @@ function tempDefault(defaultLoad) {
   //console.log(defaultLoad);
   let emojiIcon = defaultLoad.data.weather[0].icon;
   let emojiIconLink = `http://openweathermap.org/img/wn/${emojiIcon}@2x.png`;
+  let cityLat = defaultLoad.data.coord.lat;
+  let cityLon = defaultLoad.data.coord.lon;
+  let apiURLForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&units=${units}&exclude=minutely,hourly,alerts&appid=${apiKey}`;
   cityCurrent.innerHTML = defaultLoad.data.name;
   tempMain.innerHTML = Math.round(defaultLoad.data.main.temp);
   emojiMain.innerHTML = "<img src='" + emojiIconLink + "' width='70px'>";
   descriptionMain.innerHTML = defaultLoad.data.weather[0].main;
   humidity.innerHTML = Math.round(defaultLoad.data.main.humidity);
   wind.innerHTML = Math.round(defaultLoad.data.wind.speed);
+
+  axios.get(apiURLForecast).then(displayForecast);
 }
 
 function errorMsg() {
@@ -109,7 +118,7 @@ let wind = document.querySelector("#wind");
 axios.get(apiURLDefault).then(tempDefault);
 
 //Retrieve Singapore weather forecast on load (day, emoji, temp, description) **NOT YET**
-displayForecast();
+//displayForecast();
 
 //Search to retrieve searched city weather
 let form = document.querySelector("form");
