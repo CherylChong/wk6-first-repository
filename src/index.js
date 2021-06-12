@@ -21,6 +21,13 @@ function dayTimeCurrent(date) {
   return `<br>${day}<br>${hour}:${minutes}`;
 }
 
+function dayForecast(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return day;
+}
+
 function displayForecast(forecast) {
   //console.log(forecast);
   console.log(forecast.data.daily[0]);
@@ -33,7 +40,7 @@ function displayForecast(forecast) {
   daysForecast.forEach(function (forecastInfo) {
     forecastHTML =
       forecastHTML +
-      `<div class="col">${new Date(
+      `<div class="col">${dayForecast(
         forecastInfo.dt * 1000
       )}<br /><img src="http://openweathermap.org/img/wn/${
         forecastInfo.weather[0].icon
