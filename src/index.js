@@ -30,7 +30,7 @@ function dayForecast(timestamp) {
 
 function displayForecast(forecast) {
   //console.log(forecast);
-  console.log(forecast.data.daily[0]);
+  //console.log(forecast.data.daily[0]);
   //console.log(new Date(forecast.data.daily[2].dt * 1000).getDay());
 
   let forecastElement = document.querySelector("#forecast");
