@@ -21,6 +21,21 @@ function dayTimeCurrent(date) {
   return `<br>${day}<br>${hour}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let daysForecast = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHTML = `<div class="row">`;
+
+  daysForecast.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">${day}<br />☀<br />32ºC<br />Sunny</div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function tempDefault(defaultLoad) {
   //console.log(defaultLoad);
   let emojiIcon = defaultLoad.data.weather[0].icon;
@@ -94,6 +109,7 @@ let wind = document.querySelector("#wind");
 axios.get(apiURLDefault).then(tempDefault);
 
 //Retrieve Singapore weather forecast on load (day, emoji, temp, description) **NOT YET**
+displayForecast();
 
 //Search to retrieve searched city weather
 let form = document.querySelector("form");
